@@ -30,7 +30,7 @@ async function buscaArquivo(caminhoArquivo){
     }
 }
 
-export default buscaArquivo;
+export default buscaArquivo
 
 //buscaArquivo ('texto1.md');
 

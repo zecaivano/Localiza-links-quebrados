@@ -1,4 +1,4 @@
-import buscaArquivo from "../index";
+import buscaArquivo from "../index.js"
 
 const arrayResult = [
   {
@@ -14,7 +14,7 @@ describe ('buscaArquivo::', () => {
     const resultado = await buscaArquivo ('C:\Users\zecai\OneDrive\Documentos\JOSE ROBERTO\Programação\Alura\05 - JS para back-end\06 - Node\test\arquivos\texto1.md')
     expect(resultado).toEqual(arrayResult)
   })
-  it ('deve retornar mensagem "não há links"', async () => {
+  it ('deve retornar mensagem que não há links', async () => {
     const resultado = await buscaArquivo ('C:\Users\zecai\OneDrive\Documentos\JOSE ROBERTO\Programação\Alura\05 - JS para back-end\06 - Node\test\arquivos\texto1-sem-links.md')
     expect (resultado).toBe('não há links');
   })

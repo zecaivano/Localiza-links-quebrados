@@ -4,7 +4,7 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "test": "jest ./test",
+    "test": "cross-env NODE_OPTIONS=--experimental-vm-modules npx jest",
     "cli": "node cli.js texto1.md",
     "build": "cross-env NODE_ENV=production webpack --config build/webpack.config.js"
   },
@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "chalk": "^5.0.1",
+    "cross-env": "^7.0.3",
     "node-fetch": "^3.2.4"
   },
   "keywords": [],

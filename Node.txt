@@ -62,3 +62,10 @@ abc		Procura por exatamente essa sequência no texto
 const linksExtraidos = regex.exec(texto);		Exec é um método de expressão regular que separa em grupos
 
 const caminho = process.argv;		Extrai os caminhos dos arquivos
+
+Deixando o jest compatível:
+no Package.json
+"test": "cross-env NODE_OPTIONS=--experimental-vm-modules npx jest",
+
+e após isso rodar: npm i cross-env jest
+
