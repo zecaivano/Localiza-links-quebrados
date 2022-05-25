@@ -1,0 +1,64 @@
+Criando o arquivo package.json
+npm init -y (- y dar yes para todas as perguntas)
+
+npm - Node Pack Manager é o gerenciador de pacotes do node. O mais famoso é o express, uma grande biblioteca.
+
+npm install chalk 	- Após instalar a biblioteca, nesse exemplo, chalk, vai no site do npm nessa biblioteca instalada, na parte usage, e copia e cola no seu index.js 				 	pra importá-la no seu arquivo.
+
+fs	- File system: sistema do node que permite manipular arquivos, não é necessário instalação pois é uma biblioteca nativa do node.
+
+function trataErro(erro) {
+    throw new Error (erro);		// Comando do node próprio para tratar erros.
+}
+
+Comunicação síncrona: Conversa no telefone, resposta imediata.
+Comunicação assíncrona: Whatsapp, demora a responder.
+Promessa: Esperar alguma coisa acontecer para executar o próximo passo. Leva o tempo que for.
+Exemplo de promessa:
+function buscaArquivo(caminhoArquivo) {
+    const encoding = 'utf-8';
+    fs.promises
+    .readFile(caminhoArquivo, encoding)
+    .then ((texto) => console.log(texto))
+    .catch ((erro) => trataErro(erro))
+}
+
+Outra forma mais fácil de avisar que é função assíncrona: async await
+async function buscaArquivo(caminhoArquivo){
+    const encoding = 'utf-8';
+    const texto = await fs.promises.readFile(caminhoArquivo, encoding);
+    console.log(chalk.green(texto))
+}
+
+TRY CATCH: Javascript tenta executar isso, se der erro faça o catch
+async function buscaArquivo(caminhoArquivo){
+    const encoding = 'utf-8';
+    try {
+        const texto = await fs.promises.readFile(caminhoArquivo, encoding);
+        console.log(chalk.green(texto));
+    } catch (erro) {
+        trataErro (erro);
+    }
+}
+
+EXPRESSÕES REGULARES:
+abc		Procura por exatamente essa sequência no texto
+[abc] 	Crio uma classe, e faço a busca onde ocorre essas três letras separadamente.
+[^abc]	Pega tudo que não for a b e c no texto
+\[		Escapar. Procuro pelo símbolo reservado [ no texto.'
+\w		Pega qualquer estrutura que for palavra
+\[[^\]]*\]	Vai fazer a busca por tudo que estiver entre colchetes.
+\(https?	Criando expressão regular para encontrar links. O ? serve para informar que o s é opcional, pode aparecer ou não.
+\(https?:\/\/[^$#\s].[^\s]*\)	Expressão que irá encontrar links
+()		O que estiver dentro do parênteses é um grupo
+
+\[[^\]]*\]\(https?:\/\/[^$#\s].[^\s]*\)
+\[([^\]]*)\]	Criei um grupo para ir no nome do objeto.
+\((https?:\/\/[^$#\s].[^\s]*)\)	Criando outro grupo para o link
+
+/gm		Global e multilinha. Pega todas as ocorrências
+\[([^\]]*)\]\((https?:\/\/[^$#\s].[^\s]*)\)/gm	Resultado final
+
+const linksExtraidos = regex.exec(texto);		Exec é um método de expressão regular que separa em grupos
+
+const caminho = process.argv;		Extrai os caminhos dos arquivos
